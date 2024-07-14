@@ -1,0 +1,230 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name LivenessSDK
+import AVFoundation
+import Alamofire
+import CoreMotion
+import Darwin
+import Foundation
+import ImageIO
+import LicensingFramework
+@_exported import LivenessSDK
+import MLImage
+import MLKitFaceDetection
+import MLKitVision
+import Swift
+import UIKit
+import _Concurrency
+@_hasMissingDesignatedInitializers public class GlobalHelper {
+  public static func currentTimeStamp() -> Swift.String
+  public static func convertUtcTimeToLocal(dateString: Swift.String!) -> Foundation.Date?
+  public static func getDeviceId(dateString: Swift.String!) -> Foundation.Date?
+  public static func print(object: Any)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class LivenessResponse : Swift.Codable {
+  open var response: LivenessSDK.Response!
+  open var faceImageData: Foundation.Data?
+  open var ocrResponse: LivenessSDK.OcrResponse?
+  open var faceComparisonResponse: LivenessSDK.FaceComparisonResponse?
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public protocol CodeMessageEnum {
+  var message: Swift.String { get }
+}
+public enum Response : Swift.Int, LivenessSDK.CodeMessageEnum, Swift.Codable {
+  case SUCCESS
+  case FAILED
+  case TIMEOUT
+  case FACE_LOST
+  case IMAGE_PROCESSING_FAILED
+  case NO_CAMERA
+  case CAMERA_PERMISSION_REQUIRED
+  case INITIALIZATION_EXCEPTION
+  case LICENSE_FAILED
+  case LIVENESS_READ_FAILURE
+  case CANCELLATION
+  case IDENTIFICATION_REQUEST_FAILED
+  case EMPTY_SERVER_RESPONSE
+  case JSON_DECODING_FAILURE
+  public var message: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class LicensingHelper {
+  public func getLicense(completion: @escaping (LivenessSDK.License?, Swift.String?) -> ())
+  public func removeCachedLicense() -> Swift.Bool
+  @objc deinit
+}
+open class KeychainWrapper {
+  @available(*, deprecated, message: "KeychainWrapper.defaultKeychainWrapper is deprecated since version 2.2.1, use KeychainWrapper.standard instead")
+  public static let defaultKeychainWrapper: LivenessSDK.KeychainWrapper
+  public static let standard: LivenessSDK.KeychainWrapper
+  public var serviceName: Swift.String {
+    get
+  }
+  public var accessGroup: Swift.String? {
+    get
+  }
+  public init(serviceName: Swift.String, accessGroup: Swift.String? = nil)
+  open func hasValue(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  open func accessibilityOfKey(_ key: Swift.String) -> LivenessSDK.KeychainItemAccessibility?
+  open func allKeys() -> Swift.Set<Swift.String>
+  open func integer(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Int?
+  open func float(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Float?
+  open func double(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Double?
+  open func bool(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool?
+  open func string(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.String?
+  open func object(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.NSCoding?
+  open func data(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  open func dataRef(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  @discardableResult
+  open func set(_ value: Swift.Int, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Float, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Double, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Bool, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.String, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.NSCoding, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.Data, forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @available(*, deprecated, message: "remove is deprecated since version 2.2.1, use removeObject instead")
+  @discardableResult
+  open func remove(key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeObject(forKey key: Swift.String, withAccessibility accessibility: LivenessSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeAllKeys() -> Swift.Bool
+  open class func wipeKeychain()
+  @objc deinit
+}
+public enum KeychainItemAccessibility {
+  @available(iOS 4, *)
+  case afterFirstUnlock
+  @available(iOS 4, *)
+  case afterFirstUnlockThisDeviceOnly
+  @available(iOS 4, *)
+  case always
+  @available(iOS 8, *)
+  case whenPasscodeSetThisDeviceOnly
+  @available(iOS 4, *)
+  case alwaysThisDeviceOnly
+  @available(iOS 4, *)
+  case whenUnlocked
+  @available(iOS 4, *)
+  case whenUnlockedThisDeviceOnly
+  public static func == (a: LivenessSDK.KeychainItemAccessibility, b: LivenessSDK.KeychainItemAccessibility) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class License : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public class LivenessConfig {
+  public init(setChallengeMoveYourFaceToRight: Swift.Bool, setChallengeMoveYourFaceToLeft: Swift.Bool, setChallengeOpenYourMouth: Swift.Bool, setChallengeNodYourHead: Swift.Bool, maxNumberOfChallenges: Swift.Int, isOcrRequired: Swift.Bool, isFaceComparisonRequired: Swift.Bool, nicFrontImageInBase64: Swift.String, nicBackImageBase64: Swift.String)
+  public func getMaxChallengs() -> Swift.Int
+  public func getIsOcrRequired() -> Swift.Bool
+  public func getIsFaceComparisonRequired() -> Swift.Bool
+  public func getNicFrontImageBase64() -> Swift.String
+  public func getNicBackImageBase64() -> Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class ProcessImageResponse : Swift.Codable {
+  final public let ocrResponse: LivenessSDK.OcrResponse?
+  final public let faceComparisonResponse: LivenessSDK.FaceComparisonResponse?
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class OcrResponse : Swift.Codable {
+  final public let uniqueIdentifier: Swift.String?
+  final public let fields: [LivenessSDK.Fields]?
+  final public let rawData: Swift.String?
+  final public let transliteratedText: Swift.String?
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class Fields : Swift.Codable {
+  final public let name: Swift.String?
+  final public let value: Swift.String?
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class FaceComparisonResponse : Swift.Codable {
+  final public let thresholds: LivenessSDK.Thresholds?
+  final public let confidence: Swift.Float?
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class Thresholds : Swift.Codable {
+  final public let low: Swift.Float?
+  final public let high: Swift.Float?
+  final public let mid: Swift.Float?
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) public func loadGif(name: Swift.String)
+  @available(iOS 9.0, *)
+  @_Concurrency.MainActor(unsafe) public func loadGif(asset: Swift.String)
+}
+extension UIKit.UIImage {
+  public class func gif(data: Foundation.Data) -> UIKit.UIImage?
+  public class func gif(url: Swift.String) -> UIKit.UIImage?
+  public class func gif(name: Swift.String) -> UIKit.UIImage?
+  @available(iOS 9.0, *)
+  public class func gif(asset: Swift.String) -> UIKit.UIImage?
+}
+@_hasMissingDesignatedInitializers public class UIUtilities {
+  public static func imageOrientation(fromDevicePosition devicePosition: AVFoundation.AVCaptureDevice.Position = .back) -> UIKit.UIImage.Orientation
+  public static func addRectangle(_ rectangle: CoreGraphics.CGRect, to view: UIKit.UIView, color: UIKit.UIColor)
+  public static func addCircle(atPoint point: CoreGraphics.CGPoint, to view: UIKit.UIView, color: UIKit.UIColor, radius: CoreGraphics.CGFloat)
+  public static func createUIImage(from imageBuffer: CoreVideo.CVImageBuffer, orientation: UIKit.UIImage.Orientation) -> UIKit.UIImage?
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class LaunchLivenessViewController : UIKit.UIViewController, LivenessSDK.LivenessResponseDelegate {
+  @_Concurrency.MainActor(unsafe) public var livenessConfig: LivenessSDK.LivenessConfig!
+  @_Concurrency.MainActor(unsafe) public var livenessResponseDelegate: LivenessSDK.LivenessResponseDelegate!
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func onLivenessComplete(livenessResponse: LivenessSDK.LivenessResponse)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol LivenessResponseDelegate {
+  func onLivenessComplete(livenessResponse: LivenessSDK.LivenessResponse)
+}
+@_hasMissingDesignatedInitializers public class Constants {
+  public static let LICENSING_BASE_URL: Swift.String
+  public static let TELEMETRY_BASE_URL: Swift.String
+  public static let FACEOFF_PUBLIC_KEY: Swift.String
+  public static let simpleDateFormat: Swift.String
+  public static let apiDateFormat: Swift.String
+  public static let timeApiDateFormat: Swift.String
+  @objc deinit
+}
+extension LivenessSDK.Response : Swift.Equatable {}
+extension LivenessSDK.Response : Swift.Hashable {}
+extension LivenessSDK.Response : Swift.RawRepresentable {}
+extension LivenessSDK.KeychainItemAccessibility : Swift.Equatable {}
+extension LivenessSDK.KeychainItemAccessibility : Swift.Hashable {}

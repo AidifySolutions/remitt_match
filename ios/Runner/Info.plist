@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>FiatMatch: Money Transfer, Savings &amp; Investing</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>fiat_match</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FaceoffLicenseKey</key>
+	<string>MTQzLDEwLDEsMTg0LDEyNCw1OCw2LDI1MSw2LDIxNCwxMiwxODUsNjcsMTUyLDE2MSwyNCw1NCw0OCwxNTMsMjUwLDczLDIwNiwxMywyMSwxOTQsMjM3LDIwNiwzMSwyMDAsOSwyNSwyMTYsMTY4LDg1LDI0LDM2LDI0MCwxNjcsMTI4LDEsMzIsMTIxLDE2MywyMDMsNTgsMjM4LDE3LDE0MywxMDksMTgwLDIwMyw4NSwxNzksMTU4LDcwLDI1MywyMjUsMjE5LDYsMTYyLDkzLDE1MywxNTQsMTQ0LDE1NywxODksMjA2LDIwOSw3MSwxMzksMTI1LDIzMiwyMjEsMTM1LDIwMCwxMzcsNzIsMTc1LDIxNSwxMDcsMTMzLDIzNyw0MywxOTMsODMsMjYsMzgsMTU4LDE0OSw3OSwxNDcsMjksMjM5LDIwNSwyMywxOTgsMTExLDEyNiw5Niw2OCwyMzIsMTQxLDM3LDEzNywyMTAsMjUzLDIxNywyMDIsMTY3LDE5MiwxMCwyOSwxMDksMTU0LDIzOSwxNywxMjUsMTk4LDY2LDEzOSwyMSw2NCwxOTgsMjUzLDE3MCwyMyw2Miw1NCw5MiwyNCwyMjYsMjUzLDE1OCwxOTksMjUzLDExOSwxMSwxMTMsMjAsMjM4LDEzNywxNTEsNjEsMjI3LDEwNywyMTcsMzAsMzYsOTQsMiwzLDIxMiwxNTMsMjA2LDY5LDE3MywxNTQsMTI4LDEyNCw3NSw0NSw1OCw2NSwxOTQsMCwyMTUsNzMsMjEzLDE3OSwyMTksMTc2LDE3MSwxODYsMTQzLDY2LDQxLDIwNywxNTUsMTIsMTY4LDg5LDIyMSwxNTIsNjQsMTMyLDEwMCwyMTIsMjQ4LDUwLDI1LDksMTg1LDIyOCwyMjcsNzIsNTUsMjA1LDIxOSwxOTksNDcsMzAsMjAwLDE2NCwxNzcsMTI3LDIwOCwyMzUsMTEzLDE2MCw0MCwyMSw3MiwyMjcsMzMsMjUyLDIxNiwyMjcsMTczLDI2LDg1LDI0MiwxMzksNTMsMjA2LDIwOCw3MCwxNzYsMjMsMjUyLDI0MCwxNzUsMTMwLDE2MSw4OSwyMjgsMTg5LDE1OSwxNjYsMTg5LDMxLDczLDEwOSwxNDgsNjgsMjEzLDE3OSw5MywyMTAsODEsMTYsNDgsMjIwLDE0MSw0NSwxNjEsMTQ5LDEsMCwxLA==</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires access to the camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>

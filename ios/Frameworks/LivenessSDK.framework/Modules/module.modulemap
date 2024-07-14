@@ -1,0 +1,11 @@
+framework module LivenessSDK {
+  umbrella header "LivenessSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module LivenessSDK.Swift {
+    header "LivenessSDK-Swift.h"
+    requires objc
+}
