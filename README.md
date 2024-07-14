@@ -1,4 +1,4 @@
-# fiat_match
+# remitt_match
 
 A new Flutter project.
 
